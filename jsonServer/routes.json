@@ -1,0 +1,9 @@
+{
+    "dbRoutes": {
+        "/expample": "/$1"
+    },
+    "customRoutes": [
+        { "pattern": "/products", "scriptPath": "/products" },
+        { "pattern": "/products/details", "scriptPath": "/details" }
+    ]
+}

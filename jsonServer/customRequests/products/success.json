@@ -1,0 +1,148 @@
+{
+    "notebook": {
+        "title": "Ноутбуки",
+        "info": [
+            {
+                "id": "1",
+                "name": "13.3\" Ноутбук Apple MacBook Air 13 2020 2560x1600",
+                "cost": 78990,
+                "imgUrl": "",
+                "date": "5.10.23"
+            },
+            {
+                "id": "2",
+                "name": "13.3\" Ноутбук Apple MacBook Air 13 2020 2560x1600",
+                "cost": 88990,
+                "imgUrl": "",
+                "date": "5.10.23"
+            },
+            {
+                "id": "1",
+                "name": "13.3\" Ноутбук Apple MacBook Air 13 2020 2560x1600",
+                "cost": 78990,
+                "imgUrl": "",
+                "date": "5.10.23"
+            },
+            {
+                "id": "2",
+                "name": "13.3\" Ноутбук Apple MacBook Air 13 2020 2560x1600",
+                "cost": 88990,
+                "imgUrl": "",
+                "date": "5.10.23"
+            }
+        ]
+    },
+    "phone": {
+        "title": "Телефоны",
+        "info": [
+            {
+                "id": "3",
+                "name": "Apple iPhone 11 128 ГБ, Dual: nano SIM + eSIM, черный, Slimbox",
+                "date": "05.12.2023",
+                "cost": 58949,
+                "imgUrl": ""
+            },
+            {
+                "id": "4",
+                "name": "Apple iPhone 11 128 ГБ, Dual: nano SIM + eSIM, черный, Slimbox",
+                "date": "05.12.2023",
+                "cost": 56849,
+                "imgUrl": ""
+            },
+            {
+                "id": "3",
+                "name": "Apple iPhone 11 128 ГБ, Dual: nano SIM + eSIM, черный, Slimbox",
+                "date": "05.12.2023",
+                "cost": 58949,
+                "imgUrl": ""
+            },
+            {
+                "id": "4",
+                "name": "Apple iPhone 11 128 ГБ, Dual: nano SIM + eSIM, черный, Slimbox",
+                "date": "05.12.2023",
+                "cost": 56849,
+                "imgUrl": ""
+            }
+        ]
+    },
+    "notepad": {
+        "title": "Планшеты",
+        "info": [
+            {
+                "id": "5",
+                "name": "11\" Планшет Apple iPad Pro 11 2022, 128 ГБ, Wi-Fi, iPadOS",
+                "date": "05.12.2023",
+                "cost": 79750,
+                "imgUrl": ""
+            },
+            {
+                "id": "6",
+                "name": "11\" Планшет Apple iPad Pro 11 2022, 128 ГБ, Wi-Fi, iPadOS",
+                "date": "05.12.2023",
+                "cost": 75750,
+                "imgUrl": ""
+            },
+            {
+                "id": "5",
+                "name": "11\" Планшет Apple iPad Pro 11 2022, 128 ГБ, Wi-Fi, iPadOS",
+                "date": "05.12.2023",
+                "cost": 79750,
+                "imgUrl": ""
+            },
+            {
+                "id": "6",
+                "name": "11\" Планшет Apple iPad Pro 11 2022, 128 ГБ, Wi-Fi, iPadOS",
+                "date": "05.12.2023",
+                "cost": 75750,
+                "imgUrl": ""
+            },
+            {
+                "id": "5",
+                "name": "11\" Планшет Apple iPad Pro 11 2022, 128 ГБ, Wi-Fi, iPadOS",
+                "date": "05.12.2023",
+                "cost": 79750,
+                "imgUrl": ""
+            },
+            {
+                "id": "6",
+                "name": "11\" Планшет Apple iPad Pro 11 2022, 128 ГБ, Wi-Fi, iPadOS",
+                "date": "05.12.2023",
+                "cost": 75750,
+                "imgUrl": ""
+            }
+        ]
+    },
+    "headphone": {
+        "title": "Наушники",
+        "info": [
+            {
+                "id": "7",
+                "name": "Беспроводные наушники Apple AirPods Max, голубое небо",
+                "date": "05.12.2023",
+                "cost": 48949,
+                "imgUrl": ""
+            },
+            {
+                "id": "8",
+                "name": "Беспроводные наушники Apple AirPods Max, голубое небо",
+                "date": "05.12.2023",
+                "cost": 37949,
+                "imgUrl": ""
+            },
+            {
+                "id": "7",
+                "name": "Беспроводные наушники Apple AirPods Max, голубое небо",
+                "date": "05.12.2023",
+                "cost": 48949,
+                "imgUrl": ""
+            },
+            {
+                "id": "8",
+                "name": "Беспроводные наушники Apple AirPods Max, голубое небо",
+                "date": "05.12.2023",
+                "cost": 37949,
+                "imgUrl": ""
+            }
+        ]
+    }
+}
