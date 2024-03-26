@@ -1,0 +1,32 @@
+.navBarWrapper {
+    padding: 16px 0;
+    background-color: #f3f4f6;
+    border-radius: 16px;
+    width: 1200px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 56px;
+}
+
+.linkWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.link {
+    color: #000;
+    font-family: 'Inter';
+    font-size: 16px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: normal;
+    text-transform: capitalize;
+    margin-right: 32px;
+
+    &:last-child {
+        margin-right: 0;
+    }
+}
