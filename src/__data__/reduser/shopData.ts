@@ -4,7 +4,12 @@ import { IDataState, IData, IDataDetails } from '../models/models';
 
 const initialState: IDataState = {
     data: null,
-    modalData: null,
+    modalData: {
+        name: 'Беспроводные наушники Apple AirPods Max, голубое небо',
+        imgUrl: '/Notebook.png',
+        colors: ['#FFF', '#FFCEB9', '#000', '#D9D9D9', '#FFC0FC', '#B6DCFF', '#B9D6AB'],
+        cost: 48949,
+    },
     isLoading: false,
     modalLoading: false,
     isError: false,

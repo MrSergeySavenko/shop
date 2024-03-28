@@ -22,7 +22,7 @@ export const DeviseCard: React.FC<IProps> = ({ name, cost, imgUrl, date, id }) =
                 <p className={styles.cost}>{`${cost} ${'₽'}`}</p>
                 <p className={styles.name}>{name}</p>
             </div>
-            <Button id={id} />
+            <Button id={id}>Купить</Button>
         </div>
     );
 };

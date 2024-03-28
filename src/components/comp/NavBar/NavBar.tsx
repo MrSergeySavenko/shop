@@ -2,8 +2,8 @@ import React from 'react';
 
 import styles from './NavBar.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../__data__/store';
-import { IDataEelement } from '../../__data__/models/models';
+import { RootState } from '../../../__data__/store';
+import { IDataEelement } from '../../../__data__/models/models';
 
 export const NavBar: React.FC = () => {
     const { data } = useSelector((state: RootState) => state.shopData);

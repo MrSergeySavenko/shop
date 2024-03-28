@@ -4,9 +4,10 @@ import styles from './DeviseShop.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../__data__/store';
 import { fetchDataLow } from '../__data__/actions/storeData.actions';
-import { NavBar } from '../components/NavBar/NavBar';
+import { NavBar } from '../components/comp/NavBar/NavBar';
 import { IDataEelement } from '../__data__/models/models';
 import { DeviceList } from '../components/shared/DeviseList/DeviceList';
+import { ModalWindow } from '../components/comp/ModalWindow/ModalWindow';
 
 export const DeviseShop: React.FC = () => {
     const { data } = useSelector((state: RootState) => state.shopData);
@@ -32,6 +33,7 @@ export const DeviseShop: React.FC = () => {
         <div className={styles.mainpageWrapper}>
             <NavBar />
             {renderDevises()}
+            <ModalWindow />
         </div>
     );
 };
