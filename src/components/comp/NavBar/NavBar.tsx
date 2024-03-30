@@ -4,6 +4,7 @@ import styles from './NavBar.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../__data__/store';
 import { IDataEelement } from '../../../__data__/models/models';
+import { SLink, SLinkWrapper, SNavBarWrapper } from './NavBar.styled';
 
 export const NavBar: React.FC = () => {
     const { data } = useSelector((state: RootState) => state.shopData);
@@ -15,12 +16,12 @@ export const NavBar: React.FC = () => {
     const getLinks = () =>
         data &&
         Object.values(data).map((deviseInfo: IDataEelement, i: number) => {
-            return <a className={styles.link}>{deviseInfo.title}</a>;
+            return <SLink>{deviseInfo.title}</SLink>;
         });
 
     return (
-        <div className={styles.navBarWrapper}>
-            <div className={styles.linkWrapper}>{getLinks()}</div>
-        </div>
+        <SNavBarWrapper>
+            <SLinkWrapper>{getLinks()}</SLinkWrapper>
+        </SNavBarWrapper>
     );
 };

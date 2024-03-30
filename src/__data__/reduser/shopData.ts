@@ -35,7 +35,7 @@ export const dataSlice = createSlice({
         modalDataFetchFailure(state: Draft<IDataState>, action: PayloadAction<string>) {
             return { ...state, modalLoading: false, modalError: true, error: action.payload };
         },
-        modalDataFetchSuccess(state: Draft<IDataState>, action: PayloadAction<IDataDetails>) {
+        modalDataFetchSuccess(state: Draft<IDataState>, action: PayloadAction<IDataDetails | null>) {
             return { ...state, modalLoading: false, modalData: action.payload };
         },
     },

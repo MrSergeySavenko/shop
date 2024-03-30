@@ -2,27 +2,28 @@ import React from 'react';
 
 import { IDataInfo } from '../../../__data__/models/models';
 import { Button } from '../Button/Button';
-
-import styles from './DeviseCard.module.scss';
+import { useDispatch } from 'react-redux';
+import { fetchDataModal } from '../../../__data__/actions/storeData.actions';
+import { SCost, SDate, SImg, SInfoWrapper, SName, SWrapper } from './DeviseCard.styled';
 
 interface IProps {
-    name: string;
-    cost: number;
-    imgUrl: string;
-    date: string;
-    id: string;
+    infoCard: IDataInfo;
 }
 
-export const DeviseCard: React.FC<IProps> = ({ name, cost, imgUrl, date, id }) => {
+export const DeviseCard: React.FC<IProps> = ({ infoCard }) => {
+    const dispatch = useDispatch();
+
     return (
-        <div className={styles.wrapper}>
-            <img className={styles.img} src={imgUrl} />
-            <div className={styles.infoWrapper}>
-                <p className={styles.date}>{date}</p>
-                <p className={styles.cost}>{`${cost} ${'₽'}`}</p>
-                <p className={styles.name}>{name}</p>
-            </div>
-            <Button id={id}>Купить</Button>
-        </div>
+        <SWrapper>
+            <SImg src={infoCard.imgUrl} />
+            <SInfoWrapper>
+                <SDate>{infoCard.date}</SDate>
+                <SCost>{`${infoCard.cost} ${'₽'}`}</SCost>
+                <SName>{infoCard.name}</SName>
+            </SInfoWrapper>
+            <Button white={false} onClick={() => dispatch(fetchDataModal(infoCard) as any)}>
+                Купить
+            </Button>
+        </SWrapper>
     );
 };

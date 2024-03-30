@@ -1,23 +1,23 @@
 import React from 'react';
 
 import styles from './Button.module.scss';
+import { SWrapper } from './Button.styled';
 
 interface IProp {
-    id?: string;
     onClick?: () => void;
     children: string;
-    white?: boolean;
+    white: boolean;
 }
 
-export const Button: React.FC<IProp> = ({ id, onClick, children, white }) => {
+export const Button: React.FC<IProp> = ({ onClick, children, white }) => {
     //функция ждя открытия окна покупки, пока ссылки нет
     const hendleModalOpen = () => {};
 
     //функция для открытия модалки, можно обьединить с первой
 
     return (
-        <button className={white ? styles.whiteWrapper : styles.wrapper} onClick={onClick}>
+        <SWrapper white={white} onClick={onClick}>
             {children}
-        </button>
+        </SWrapper>
     );
 };

@@ -11,9 +11,6 @@ export const headphone2 = require('./headphone2.json');
 
 exports.response = (_req: Request, res: Response) => {
     console.log(_req.body);
-    // if (_req.body.id === 1) {
-    //     return res.status(200).send(notebook1);
-    // }
     switch (_req.body.id) {
         case '1':
             res.status(200).send(notebook1);

@@ -1,4 +1,5 @@
-import { IData, IDataDetails } from '../models/models';
+import { request } from 'http';
+import { IData, IDataDetails, IDataInfo } from '../models/models';
 import { dataSlice } from '../reduser';
 import { AppDispatch } from '../store';
 
@@ -20,13 +21,20 @@ export const fetchDataLow = () => async (dispatch: AppDispatch) => {
     }
 };
 
-export const fetchDataModal = () => async (dispatch: AppDispatch) => {
+export const fetchDataModal = (req: IDataInfo) => async (dispatch: AppDispatch) => {
     try {
         dispatch(dataSlice.actions.modalDataFetch());
 
         const url = 'http://localhost:5000/products/details';
 
-        const response = await fetch(url);
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(req),
+        });
+
         const data: IDataDetails = await response.json();
 
         if (response) {
