@@ -10,8 +10,12 @@ export const SBackplateWrapper = styled('div')(() => ({
     alignItems: 'center',
 }));
 
-export const SWrapper = styled('div')(() => ({
-    maxwidth: '1200px',
+interface IProp {
+    theme: boolean;
+}
+
+export const SWrapper = styled('div')(({ theme }: IProp) => ({
+    maxWidth: '1200px',
     position: 'absolute',
     marginLeft: 'auto',
     marginRight: 'auto',
@@ -22,7 +26,7 @@ export const SWrapper = styled('div')(() => ({
     flexDirection: 'column',
     padding: '32px 24px',
     borderRadius: '16px',
-    backgroundColor: '#fff',
+    backgroundColor: theme ? '#23272F' : '#fff',
 }));
 
 export const SHeaderWrapper = styled('div')(() => ({
@@ -33,8 +37,8 @@ export const SHeaderWrapper = styled('div')(() => ({
     marginBottom: '32px',
 }));
 
-export const SHeader = styled('p')(() => ({
-    color: '#000',
+export const SHeader = styled('p')(({ theme }: IProp) => ({
+    color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '32px',
     fontWeight: '500',
@@ -45,7 +49,7 @@ export const SHeader = styled('p')(() => ({
 export const SCloseBlockImg = styled('div')(() => ({
     width: '24px',
     height: '24px',
-    backgroundImage: "url('../../../../public/Close.svg')",
+    backgroundImage: "url('/Close.svg')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
@@ -86,8 +90,8 @@ export const SNameText = styled('p')(() => ({
     marginBottom: '8px',
 }));
 
-export const SText = styled('p')(() => ({
-    color: '#000',
+export const SText = styled('p')(({ theme }: IProp) => ({
+    color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '16px',
     fontWeight: '400',
@@ -113,15 +117,15 @@ export const SButtonWrapper = styled('div')(() => ({
     alignItems: 'end',
 }));
 
-export const STextarea = styled('textarea')(() => ({
+export const STextarea = styled('textarea')(({ theme }: IProp) => ({
     width: '532px',
     height: '100px',
-    background: '#f3f4f6',
+    background: theme ? '#363B44' : '#f3f4f6',
     borderRadius: '16px',
     border: 'none',
     padding: '16px',
     outline: 'none',
-    color: '#000',
+    color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '16px',
     fontWeight: '400',
@@ -129,8 +133,8 @@ export const STextarea = styled('textarea')(() => ({
     letterSpacing: '0',
 }));
 
-export const SConst = styled('p')(() => ({
-    color: '#000',
+export const SConst = styled('p')(({ theme }: IProp) => ({
+    color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '24px',
     fontWeight: '400',
@@ -144,11 +148,11 @@ export const SCounterWrapper = styled('div')(() => ({
     marginRight: '112px',
 }));
 
-export const SCounterContainer = styled('div')(() => ({
+export const SCounterContainer = styled('div')(({ theme }: IProp) => ({
     padding: '8px 12.5px',
-    borderTop: '1px solid #919fab',
-    borderBottom: '1px solid #919fab',
-    color: '#000',
+    borderTop: theme ? '1px solid #919FAB' : '1px solid #919fab',
+    borderBottom: theme ? '1px solid #919FAB' : '1px solid #919fab',
+    color: theme ? '#FFFFFF' : '#0000',
     fontFamily: 'Inter',
     fontSize: '16px',
     fontWeight: '400',
@@ -156,22 +160,22 @@ export const SCounterContainer = styled('div')(() => ({
     letterSpacing: '0',
 }));
 
-export const SPlusConteiner = styled('div')(() => ({
+export const SPlusConteiner = styled('div')(({ theme }: IProp) => ({
     height: '35px',
     width: '36.5px',
-    border: '1px solid #919fab',
-    backgroundImage: "url('../../../../public/Plus.png')",
+    border: theme ? '1px solid #919FAB' : '1px solid #919fab',
+    backgroundImage: "url('/Plus.png')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     borderRadius: '16px 0 0 16px',
 }));
 
-export const SMinusConteiner = styled('div')(() => ({
+export const SMinusConteiner = styled('div')(({ theme }: IProp) => ({
     height: '35px',
     width: '35.5px',
-    border: '1px solid #919fab',
+    border: theme ? '1px solid #919FAB' : '1px solid #919fab',
     borderRadius: '0 16px 16px 0',
-    backgroundImage: "url('../../../../public/Minus.png')",
+    backgroundImage: "url('/Minus.png')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
 }));

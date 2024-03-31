@@ -1,16 +1,20 @@
 import styled from '@emotion/styled';
 
-export const SNavBarWrapper = styled('div')(() => ({
+interface IProp {
+    theme: boolean;
+}
+
+export const SNavBarWrapper = styled('div')(({ theme }: IProp) => ({
+    position: 'relative',
     padding: '16px 0',
-    backgroundColor: '#f3f4f6',
+    backgroundColor: theme ? '#363B44' : '#f3f4f6',
     borderRadius: '16px',
-    width: '1200px',
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'center',
     alignItems: 'center',
     marginBottom: '56px',
-    boxShadow: '7px 5px 5px #ebedf0',
+    boxShadow: theme ? 'none' : '7px 5px 5px #ebedf0',
 }));
 
 export const SLinkWrapper = styled('div')(() => ({
@@ -19,8 +23,8 @@ export const SLinkWrapper = styled('div')(() => ({
     justifyContent: 'space-between',
 }));
 
-export const SLink = styled('a')(() => ({
-    color: '#000',
+export const SLink = styled('a')(({ theme }: IProp) => ({
+    color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '16px',
     fontStyle: 'normal',
@@ -32,4 +36,17 @@ export const SLink = styled('a')(() => ({
     '&:lastChild': {
         marginRight: '0',
     },
+}));
+
+export const SThemeBtn = styled('div')(({ theme }: IProp) => ({
+    position: 'absolute',
+    width: theme ? '19px' : '24px',
+    height: theme ? '18px' : '24px',
+    backgroundImage: theme ? "url('/ThemeMoon.svg')" : "url('/sun.svg')",
+    top: theme ? '16px' : '15px',
+    right: theme ? '27px' : '24px',
+    border: 'none',
+    backgroundRepeat: 'no-repeat',
+    backgroundPosition: 'center',
+    backgroundSize: '80%',
 }));

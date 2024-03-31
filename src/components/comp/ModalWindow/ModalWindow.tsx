@@ -33,7 +33,7 @@ import {
 const portal = document.getElementById('portal');
 
 export const ModalWindow: React.FC = () => {
-    const { modalData } = useSelector((state: RootState) => state.shopData);
+    const { modalData, theme } = useSelector((state: RootState) => state.shopData);
 
     const [count, setCount] = useState(0);
     const [color, setColor] = useState('');
@@ -57,9 +57,9 @@ export const ModalWindow: React.FC = () => {
         <>
             {modalData ? (
                 <SBackplateWrapper>
-                    <SWrapper>
+                    <SWrapper theme={theme}>
                         <SHeaderWrapper>
-                            <SHeader>Товар добавлен в корзину</SHeader>
+                            <SHeader theme={theme}>Товар добавлен в корзину</SHeader>
                             <SCloseBlockImg />
                         </SHeaderWrapper>
                         <SContentWrapper>
@@ -68,7 +68,7 @@ export const ModalWindow: React.FC = () => {
                             </SImgConteiner>
                             <SColumnWrapper>
                                 <SNameText>Наименование</SNameText>
-                                <SText>{modalData.name}</SText>
+                                <SText theme={theme}>{modalData.name}</SText>
                             </SColumnWrapper>
                             <SColumnWrapper>
                                 <SNameText>Цвет</SNameText>
@@ -77,20 +77,26 @@ export const ModalWindow: React.FC = () => {
                             <SColumnWrapper>
                                 <SNameText>Количество</SNameText>
                                 <SCounterWrapper>
-                                    <SPlusConteiner onClick={() => handleColculateCount(true)} />
-                                    <SCounterContainer>{count}</SCounterContainer>
-                                    <SMinusConteiner onClick={() => handleColculateCount(false)} />
+                                    <SPlusConteiner
+                                        theme={theme}
+                                        onClick={() => handleColculateCount(true)}
+                                    />
+                                    <SCounterContainer theme={theme}>{count}</SCounterContainer>
+                                    <SMinusConteiner
+                                        theme={theme}
+                                        onClick={() => handleColculateCount(false)}
+                                    />
                                 </SCounterWrapper>
                             </SColumnWrapper>
                             <SColumnWrapper>
                                 <SNameText>Цена</SNameText>
-                                <SConst>{`${modalData.cost} ${'₽'}`}</SConst>
+                                <SConst theme={theme}>{`${modalData.cost} ${'₽'}`}</SConst>
                             </SColumnWrapper>
                         </SContentWrapper>
                         <SBottomWrapper>
                             <SDescriptionWrapper>
                                 <SNameText>Комментарий к заказу</SNameText>
-                                <STextarea />
+                                <STextarea theme={theme} />
                             </SDescriptionWrapper>
                             <SButtonWrapper>
                                 <Button

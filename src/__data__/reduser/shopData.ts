@@ -4,16 +4,12 @@ import { IDataState, IData, IDataDetails } from '../models/models';
 
 const initialState: IDataState = {
     data: null,
-    modalData: {
-        name: 'Беспроводные наушники Apple AirPods Max, голубое небо',
-        imgUrl: '/Notebook.png',
-        colors: ['#FFF', '#FFCEB9', '#000', '#D9D9D9', '#FFC0FC', '#B6DCFF', '#B9D6AB'],
-        cost: 48949,
-    },
+    modalData: null,
     isLoading: false,
     modalLoading: false,
     isError: false,
     modalError: false,
+    theme: false,
 };
 
 export const dataSlice = createSlice({
@@ -37,6 +33,9 @@ export const dataSlice = createSlice({
         },
         modalDataFetchSuccess(state: Draft<IDataState>, action: PayloadAction<IDataDetails | null>) {
             return { ...state, modalLoading: false, modalData: action.payload };
+        },
+        changeTheme(state) {
+            return { ...state, theme: !state.theme };
         },
     },
 });

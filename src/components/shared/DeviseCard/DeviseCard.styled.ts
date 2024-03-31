@@ -1,5 +1,9 @@
 import styled from '@emotion/styled';
 
+interface IProp {
+    theme: boolean;
+}
+
 export const SWrapper = styled('div')(() => ({
     maxWidth: '282px',
     display: 'flex',
@@ -29,8 +33,8 @@ export const SDate = styled('p')(() => ({
     marginBottom: '8px',
 }));
 
-export const SCost = styled('p')(() => ({
-    color: '#000',
+export const SCost = styled('p')(({ theme }: IProp) => ({
+    color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '24px',
     fontStyle: 'normal',
@@ -40,8 +44,8 @@ export const SCost = styled('p')(() => ({
     marginBottom: '8px',
 }));
 
-export const SName = styled('p')(() => ({
-    color: '#000',
+export const SName = styled('p')(({ theme }: IProp) => ({
+    color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '16px',
     fontWeight: '400',

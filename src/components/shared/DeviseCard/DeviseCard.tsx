@@ -2,15 +2,18 @@ import React from 'react';
 
 import { IDataInfo } from '../../../__data__/models/models';
 import { Button } from '../Button/Button';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataModal } from '../../../__data__/actions/storeData.actions';
 import { SCost, SDate, SImg, SInfoWrapper, SName, SWrapper } from './DeviseCard.styled';
+import { RootState } from '../../../__data__/store';
 
 interface IProps {
     infoCard: IDataInfo;
 }
 
 export const DeviseCard: React.FC<IProps> = ({ infoCard }) => {
+    const { theme } = useSelector((state: RootState) => state.shopData);
+
     const dispatch = useDispatch();
 
     return (
@@ -18,8 +21,8 @@ export const DeviseCard: React.FC<IProps> = ({ infoCard }) => {
             <SImg src={infoCard.imgUrl} />
             <SInfoWrapper>
                 <SDate>{infoCard.date}</SDate>
-                <SCost>{`${infoCard.cost} ${'₽'}`}</SCost>
-                <SName>{infoCard.name}</SName>
+                <SCost theme={theme}>{`${infoCard.cost} ${'₽'}`}</SCost>
+                <SName theme={theme}>{infoCard.name}</SName>
             </SInfoWrapper>
             <Button white={false} onClick={() => dispatch(fetchDataModal(infoCard) as any)}>
                 Купить

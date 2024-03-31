@@ -8,10 +8,10 @@ import { NavBar } from '../components/comp/NavBar/NavBar';
 import { IDataEelement } from '../__data__/models/models';
 import { DeviceList } from '../components/shared/DeviseList/DeviceList';
 import { ModalWindow } from '../components/comp/ModalWindow/ModalWindow';
-import { SBlockHeader, SMainWrapper } from './DeviseShop.styled';
+import { SAllWrapper, SBlockHeader, SMainWrapper } from './DeviseShop.styled';
 
 export const DeviseShop: React.FC = () => {
-    const { data } = useSelector((state: RootState) => state.shopData);
+    const { data, theme } = useSelector((state: RootState) => state.shopData);
 
     const dispatch = useDispatch();
 
@@ -20,7 +20,7 @@ export const DeviseShop: React.FC = () => {
         Object.values(data).map((deviseInfo: IDataEelement, i: number) => {
             return (
                 <>
-                    <SBlockHeader>{deviseInfo.title}</SBlockHeader>
+                    <SBlockHeader theme={theme}>{deviseInfo.title}</SBlockHeader>
                     <DeviceList dataInfo={deviseInfo.info} />
                 </>
             );
@@ -31,10 +31,12 @@ export const DeviseShop: React.FC = () => {
     }, []);
 
     return (
-        <SMainWrapper>
-            <NavBar />
-            {renderDevises()}
-            <ModalWindow />
-        </SMainWrapper>
+        <SAllWrapper theme={theme}>
+            <SMainWrapper>
+                <NavBar />
+                {renderDevises()}
+                <ModalWindow />
+            </SMainWrapper>
+        </SAllWrapper>
     );
 };
