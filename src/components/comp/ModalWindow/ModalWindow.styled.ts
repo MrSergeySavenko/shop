@@ -77,6 +77,10 @@ export const SImg = styled('img')(() => ({
 export const SWrapperForColumn = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'row',
+
+    '@media (max-width: 1001px)': {
+        flexDirection: 'column',
+    },
 }));
 
 export const SColumnWrapper = styled('div')(() => ({
