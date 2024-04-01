@@ -17,8 +17,8 @@ interface IProp {
 export const SWrapper = styled('div')(({ theme }: IProp) => ({
     maxWidth: '1200px',
     position: 'absolute',
-    marginLeft: 'auto',
-    marginRight: 'auto',
+    marginLeft: '24px',
+    marginRight: '24px',
     left: '0',
     right: '0',
     top: '64px',
@@ -72,6 +72,11 @@ export const SImgConteiner = styled('div')(() => ({
 export const SImg = styled('img')(() => ({
     width: '211px',
     height: '200px',
+}));
+
+export const SWrapperForColumn = styled('div')(() => ({
+    display: 'flex',
+    flexDirection: 'row',
 }));
 
 export const SColumnWrapper = styled('div')(() => ({

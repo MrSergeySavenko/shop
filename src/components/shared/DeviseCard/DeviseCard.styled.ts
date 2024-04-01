@@ -8,6 +8,14 @@ export const SWrapper = styled('div')(() => ({
     maxWidth: '282px',
     display: 'flex',
     flexDirection: 'column',
+    marginBottom: '24px',
+}));
+
+export const SImgWrapper = styled('div')(({ theme }: IProp) => ({
+    height: '263px',
+    marginBottom: '16px',
+    borderRadius: '16px',
+    background: theme ? '#fff' : '#A4A8AC1A',
 }));
 
 export const SImg = styled('img')(() => ({

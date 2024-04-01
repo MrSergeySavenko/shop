@@ -4,7 +4,7 @@ import { IDataInfo } from '../../../__data__/models/models';
 import { Button } from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataModal } from '../../../__data__/actions/storeData.actions';
-import { SCost, SDate, SImg, SInfoWrapper, SName, SWrapper } from './DeviseCard.styled';
+import { SCost, SDate, SImg, SImgWrapper, SInfoWrapper, SName, SWrapper } from './DeviseCard.styled';
 import { RootState } from '../../../__data__/store';
 
 interface IProps {
@@ -18,7 +18,9 @@ export const DeviseCard: React.FC<IProps> = ({ infoCard }) => {
 
     return (
         <SWrapper>
-            <SImg src={infoCard.imgUrl} />
+            <SImgWrapper theme={theme}>
+                <SImg src={infoCard.imgUrl} />
+            </SImgWrapper>
             <SInfoWrapper>
                 <SDate>{infoCard.date}</SDate>
                 <SCost theme={theme}>{`${infoCard.cost} ${'₽'}`}</SCost>

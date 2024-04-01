@@ -6,8 +6,6 @@ interface IProp {
 
 export const SAllWrapper = styled('div')(({ theme }: IProp) => ({
     backgroundColor: theme ? '#23272F' : '#fff',
-    width: '100vw',
-    heigth: '100vh',
 }));
 
 export const SMainWrapper = styled('div')(() => ({

@@ -28,6 +28,7 @@ import {
     SText,
     STextarea,
     SWrapper,
+    SWrapperForColumn,
 } from './ModalWindow.styled';
 
 const portal = document.getElementById('portal');
@@ -66,32 +67,36 @@ export const ModalWindow: React.FC = () => {
                             <SImgConteiner>
                                 <SImg src={modalData.imgUrl} alt='Кртинка товара' />
                             </SImgConteiner>
-                            <SColumnWrapper>
-                                <SNameText>Наименование</SNameText>
-                                <SText theme={theme}>{modalData.name}</SText>
-                            </SColumnWrapper>
-                            <SColumnWrapper>
-                                <SNameText>Цвет</SNameText>
-                                <SColorConteiner>{renderColorBtn()}</SColorConteiner>
-                            </SColumnWrapper>
-                            <SColumnWrapper>
-                                <SNameText>Количество</SNameText>
-                                <SCounterWrapper>
-                                    <SPlusConteiner
-                                        theme={theme}
-                                        onClick={() => handleColculateCount(true)}
-                                    />
-                                    <SCounterContainer theme={theme}>{count}</SCounterContainer>
-                                    <SMinusConteiner
-                                        theme={theme}
-                                        onClick={() => handleColculateCount(false)}
-                                    />
-                                </SCounterWrapper>
-                            </SColumnWrapper>
-                            <SColumnWrapper>
-                                <SNameText>Цена</SNameText>
-                                <SConst theme={theme}>{`${modalData.cost} ${'₽'}`}</SConst>
-                            </SColumnWrapper>
+                            <SWrapperForColumn>
+                                <SColumnWrapper>
+                                    <SNameText>Наименование</SNameText>
+                                    <SText theme={theme}>{modalData.name}</SText>
+                                </SColumnWrapper>
+                                <SColumnWrapper>
+                                    <SNameText>Цвет</SNameText>
+                                    <SColorConteiner>{renderColorBtn()}</SColorConteiner>
+                                </SColumnWrapper>
+                            </SWrapperForColumn>
+                            <SWrapperForColumn>
+                                <SColumnWrapper>
+                                    <SNameText>Количество</SNameText>
+                                    <SCounterWrapper>
+                                        <SPlusConteiner
+                                            theme={theme}
+                                            onClick={() => handleColculateCount(true)}
+                                        />
+                                        <SCounterContainer theme={theme}>{count}</SCounterContainer>
+                                        <SMinusConteiner
+                                            theme={theme}
+                                            onClick={() => handleColculateCount(false)}
+                                        />
+                                    </SCounterWrapper>
+                                </SColumnWrapper>
+                                <SColumnWrapper>
+                                    <SNameText>Цена</SNameText>
+                                    <SConst theme={theme}>{`${modalData.cost} ${'₽'}`}</SConst>
+                                </SColumnWrapper>
+                            </SWrapperForColumn>
                         </SContentWrapper>
                         <SBottomWrapper>
                             <SDescriptionWrapper>
