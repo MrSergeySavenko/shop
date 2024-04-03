@@ -6,7 +6,7 @@ import { setupStore } from './__data__/store';
 
 import { Provider } from 'react-redux';
 
-import { DeviseShop } from './pages/DeviseShop';
+import { DeviceShop } from './pages/DeviceShop';
 
 import moment from 'moment';
 import 'moment/locale/ru';
@@ -19,6 +19,6 @@ moment.locale('ru');
 
 root.render(
     <Provider store={store}>
-        <DeviseShop />
+        <DeviceShop />
     </Provider>
 );

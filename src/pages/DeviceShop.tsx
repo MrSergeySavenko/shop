@@ -1,16 +1,16 @@
 import React, { useEffect } from 'react';
 
-import styles from './DeviseShop.module.scss';
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../__data__/store';
 import { fetchDataLow } from '../__data__/actions/storeData.actions';
 import { NavBar } from '../components/comp/NavBar/NavBar';
 import { IDataEelement } from '../__data__/models/models';
-import { DeviceList } from '../components/shared/DeviseList/DeviceList';
+import { DeviceList } from '../components/shared/DeviceList/DeviceList';
 import { ModalWindow } from '../components/comp/ModalWindow/ModalWindow';
-import { SAllWrapper, SBlockHeader, SMainWrapper } from './DeviseShop.styled';
+import { SAllWrapper, SBlockHeader, SMainWrapper } from './DeviceShop.styled';
+import { stringify } from 'querystring';
 
-export const DeviseShop: React.FC = () => {
+export const DeviceShop: React.FC = () => {
     const { data, theme } = useSelector((state: RootState) => state.shopData);
 
     const dispatch = useDispatch();
@@ -20,7 +20,9 @@ export const DeviseShop: React.FC = () => {
         Object.values(data).map((deviseInfo: IDataEelement, i: number) => {
             return (
                 <>
-                    <SBlockHeader theme={theme}>{deviseInfo.title}</SBlockHeader>
+                    <SBlockHeader id={String(i)} theme={theme}>
+                        {deviseInfo.title}
+                    </SBlockHeader>
                     <DeviceList dataInfo={deviseInfo.info} />
                 </>
             );

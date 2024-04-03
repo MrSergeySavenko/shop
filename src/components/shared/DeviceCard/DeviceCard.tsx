@@ -4,14 +4,14 @@ import { IDataInfo } from '../../../__data__/models/models';
 import { Button } from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchDataModal } from '../../../__data__/actions/storeData.actions';
-import { SCost, SDate, SImg, SImgWrapper, SInfoWrapper, SName, SWrapper } from './DeviseCard.styled';
+import { SCost, SDate, SImg, SImgWrapper, SInfoWrapper, SName, SWrapper } from './DeviceCard.styled';
 import { RootState } from '../../../__data__/store';
 
 interface IProps {
     infoCard: IDataInfo;
 }
 
-export const DeviseCard: React.FC<IProps> = ({ infoCard }) => {
+export const DeviceCard: React.FC<IProps> = ({ infoCard }) => {
     const { theme } = useSelector((state: RootState) => state.shopData);
 
     const dispatch = useDispatch();

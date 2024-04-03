@@ -18,4 +18,10 @@ export const SWrapper = styled('button')(({ white }: IProp) => ({
     border: white ? '1px solid rgb(35, 149, 255)' : 'none',
     maxHeight: '39px',
     marginRight: white ? '24px' : '0',
+    cursor: 'pointer',
+
+    '@media (max-width: 1001px)': {
+        maxWidth: 'none',
+        width: '100%',
+    },
 }));

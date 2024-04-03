@@ -17,8 +17,8 @@ interface IProp {
 export const SWrapper = styled('div')(({ theme }: IProp) => ({
     maxWidth: '1200px',
     position: 'absolute',
-    marginLeft: '24px',
-    marginRight: '24px',
+    marginLeft: 'auto',
+    marginRight: 'auto',
     left: '0',
     right: '0',
     top: '64px',
@@ -44,21 +44,33 @@ export const SHeader = styled('p')(({ theme }: IProp) => ({
     fontWeight: '500',
     lineHeight: '39px',
     letterSpacing: '0',
+
+    '@media (max-width: 560px)': {
+        lineHeight: '29px',
+        fontSize: '24px',
+        maxWidth: '212px',
+    },
 }));
 
-export const SCloseBlockImg = styled('div')(() => ({
+export const SCloseBlockImg = styled('div')(({ theme }: IProp) => ({
     width: '24px',
     height: '24px',
-    backgroundImage: "url('/Close.svg')",
+    backgroundImage: theme ? "url('/CloseWhite.svg')" : "url('/Close.svg')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: 'cover',
+    cursor: 'pointer',
 }));
 
 export const SContentWrapper = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'row',
     marginBottom: '32px',
+
+    '@media (max-width: 560px)': {
+        flexDirection: 'column',
+        alignItems: 'center',
+    },
 }));
 
 export const SImgConteiner = styled('div')(() => ({
@@ -67,11 +79,19 @@ export const SImgConteiner = styled('div')(() => ({
     borderRadius: '16px',
     backgroundColor: '#a4a8ac1a',
     marginRight: '24px',
+
+    '@media (max-width: 560px)': {
+        marginRight: '0',
+        marginBottom: '16px',
+    },
 }));
 
 export const SImg = styled('img')(() => ({
     width: '211px',
     height: '200px',
+    '@media (max-width: 560px)': {
+        width: '100%',
+    },
 }));
 
 export const SWrapperForColumn = styled('div')(() => ({
@@ -81,12 +101,26 @@ export const SWrapperForColumn = styled('div')(() => ({
     '@media (max-width: 1001px)': {
         flexDirection: 'column',
     },
+
+    '@media (max-width: 560px)': {
+        width: '100%',
+
+        '&:last-child': {
+            flexDirection: 'row',
+            justifyContent: 'space-between',
+        },
+    },
 }));
 
 export const SColumnWrapper = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'column',
     marginRight: '24px',
+
+    '@media (max-width: 560px)': {
+        marginBottom: '16px',
+        marginRight: '0',
+    },
 }));
 
 export const SNameText = styled('p')(() => ({
@@ -107,17 +141,30 @@ export const SText = styled('p')(({ theme }: IProp) => ({
     lineHeight: '19px',
     letterSpacing: '0',
     maxWidth: '201px',
+
+    '@media (max-width: 560px)': {
+        width: '100%',
+        maxWidth: 'none',
+    },
 }));
 
 export const SBottomWrapper = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
+
+    '@media (max-width: 1001px)': {
+        flexDirection: 'column',
+    },
 }));
 
 export const SDescriptionWrapper = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'column',
+
+    '@media (max-width: 1001px)': {
+        marginBottom: '24px',
+    },
 }));
 
 export const SButtonWrapper = styled('div')(() => ({
@@ -140,6 +187,10 @@ export const STextarea = styled('textarea')(({ theme }: IProp) => ({
     fontWeight: '400',
     lineHeight: '19px',
     letterSpacing: '0',
+
+    '@media (max-width: 1001px)': {
+        maxWidth: '100%',
+    },
 }));
 
 export const SConst = styled('p')(({ theme }: IProp) => ({
@@ -155,6 +206,10 @@ export const SCounterWrapper = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'row',
     marginRight: '112px',
+
+    '@media (max-width: 560px)': {
+        marginRight: '0px',
+    },
 }));
 
 export const SCounterContainer = styled('div')(({ theme }: IProp) => ({
@@ -173,7 +228,7 @@ export const SPlusConteiner = styled('div')(({ theme }: IProp) => ({
     height: '35px',
     width: '36.5px',
     border: theme ? '1px solid #919FAB' : '1px solid #919fab',
-    backgroundImage: "url('/Plus.png')",
+    backgroundImage: theme ? "url('/PlusWhite.svg')" : "url('/Plus.svg')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     borderRadius: '16px 0 0 16px',
@@ -184,7 +239,7 @@ export const SMinusConteiner = styled('div')(({ theme }: IProp) => ({
     width: '35.5px',
     border: theme ? '1px solid #919FAB' : '1px solid #919fab',
     borderRadius: '0 16px 16px 0',
-    backgroundImage: "url('/Minus.png')",
+    backgroundImage: theme ? "url('/MinusWhite.svg')" : "url('/Minus.svg')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
 }));
@@ -194,4 +249,9 @@ export const SColorConteiner = styled('div')(() => ({
     flexDirection: 'row',
     flexWrap: 'wrap',
     maxWidth: '140px',
+
+    '@media (max-width: 560px)': {
+        width: '100%',
+        maxWidth: 'none',
+    },
 }));

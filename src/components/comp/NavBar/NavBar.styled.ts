@@ -32,6 +32,8 @@ export const SLink = styled('a')(({ theme }: IProp) => ({
     lineHeight: 'normal',
     textTransform: 'capitalize',
     marginRight: '32px',
+    textDecoration: 'none',
+    cursor: 'pointer',
 
     '&:lastChild': {
         marginRight: '0',
@@ -42,11 +44,12 @@ export const SThemeBtn = styled('div')(({ theme }: IProp) => ({
     position: 'absolute',
     width: theme ? '19px' : '24px',
     height: theme ? '18px' : '24px',
-    backgroundImage: theme ? "url('/ThemeMoon.svg')" : "url('/sun.svg')",
+    backgroundImage: theme ? "url('/ThemeMoon.svg')" : "url('/ThemeSun.svg')",
     top: theme ? '16px' : '15px',
     right: theme ? '27px' : '24px',
     border: 'none',
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     backgroundSize: '80%',
+    cursor: 'pointer',
 }));

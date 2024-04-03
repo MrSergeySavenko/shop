@@ -1,6 +1,5 @@
-import { request } from 'http';
 import { IData, IDataDetails, IDataInfo } from '../models/models';
-import { dataSlice } from '../reduser';
+import { dataSlice } from '../reducer';
 import { AppDispatch } from '../store';
 
 export const fetchDataLow = () => async (dispatch: AppDispatch) => {

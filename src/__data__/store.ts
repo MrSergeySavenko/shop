@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 
-import { shopData } from './reduser';
+import { shopData } from './reducer';
 
 const rootReducer = combineReducers({ shopData });
 

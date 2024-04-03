@@ -9,6 +9,10 @@ export const SWrapper = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'column',
     marginBottom: '24px',
+
+    '@media (max-width: 671px)': {
+        maxWidth: '156px',
+    },
 }));
 
 export const SImgWrapper = styled('div')(({ theme }: IProp) => ({
@@ -16,12 +20,21 @@ export const SImgWrapper = styled('div')(({ theme }: IProp) => ({
     marginBottom: '16px',
     borderRadius: '16px',
     background: theme ? '#fff' : '#A4A8AC1A',
+
+    '@media (max-width: 671px)': {
+        maxHeight: '120px',
+    },
 }));
 
 export const SImg = styled('img')(() => ({
     height: '263px',
     width: '282px',
     marginBottom: '16px',
+
+    '@media (max-width: 671px)': {
+        maxWidth: '156px',
+        maxHeight: '120px',
+    },
 }));
 
 export const SInfoWrapper = styled('div')(() => ({
@@ -50,6 +63,10 @@ export const SCost = styled('p')(({ theme }: IProp) => ({
     lineHeight: 'normal',
     textTransform: 'capitalize',
     marginBottom: '8px',
+
+    '@media (max-width: 671px)': {
+        fontSize: '20px',
+    },
 }));
 
 export const SName = styled('p')(({ theme }: IProp) => ({

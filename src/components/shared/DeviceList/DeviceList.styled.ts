@@ -16,4 +16,13 @@ export const SWrapper = styled('div')(() => ({
     '@media (max-width: 976px)': {
         gridTemplateColumns: 'repeat(2, 1fr)',
     },
+
+    '@media (max-width: 671px)': {
+        gridTemplateColumns: 'repeat(3, 1fr)',
+        columnGap: '16px',
+    },
+
+    '@media (max-width: 560px)': {
+        gridTemplateColumns: 'repeat(2, 1fr)',
+    },
 }));

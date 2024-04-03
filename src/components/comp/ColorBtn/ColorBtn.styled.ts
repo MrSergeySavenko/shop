@@ -13,4 +13,5 @@ export const SColorWrapper = styled('div')(({ bagColor, activeColor }: IProp) =>
     marginRight: '8px',
     backgroundColor: bagColor,
     marginBottom: '8px',
+    cursor: 'pointer',
 }));

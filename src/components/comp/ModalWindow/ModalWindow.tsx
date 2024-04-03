@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from '../../../__data__/store';
 import { createPortal } from 'react-dom';
 import { Button } from '../../shared/Button/Button';
 import { ColorBtn } from '../ColorBtn/ColorBtn';
-import { dataSlice } from '../../../__data__/reduser';
+import { dataSlice } from '../../../__data__/reducer';
 import {
     SBackplateWrapper,
     SBottomWrapper,
@@ -36,16 +36,22 @@ const portal = document.getElementById('portal');
 export const ModalWindow: React.FC = () => {
     const { modalData, theme } = useSelector((state: RootState) => state.shopData);
 
-    const [count, setCount] = useState(0);
+    const [count, setCount] = useState(1);
     const [color, setColor] = useState('');
 
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if (modalData) {
+            setColor(modalData?.colors[0]);
+        }
+    }, [modalData]);
+
     const handleColculateCount = (plus: boolean) => {
-        if (count >= 0) {
+        if (count >= 1) {
             plus ? setCount(count + 1) : setCount(count - 1);
         } else {
-            setCount(0);
+            setCount(1);
         }
     };
 
@@ -54,14 +60,18 @@ export const ModalWindow: React.FC = () => {
             return <ColorBtn bagColor={colorItem} color={color} setColor={setColor} />;
         });
 
+    const handleClearData = () => dispatch(dataSlice.actions.modalDataFetchSuccess(null));
+
+    const hadleStopPropagation = (e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation();
+
     return createPortal(
         <>
             {modalData ? (
-                <SBackplateWrapper>
-                    <SWrapper theme={theme}>
+                <SBackplateWrapper onClick={handleClearData}>
+                    <SWrapper theme={theme} onClick={hadleStopPropagation}>
                         <SHeaderWrapper>
                             <SHeader theme={theme}>Товар добавлен в корзину</SHeader>
-                            <SCloseBlockImg />
+                            <SCloseBlockImg onClick={handleClearData} theme={theme} />
                         </SHeaderWrapper>
                         <SContentWrapper>
                             <SImgConteiner>
@@ -104,10 +114,7 @@ export const ModalWindow: React.FC = () => {
                                 <STextarea theme={theme} />
                             </SDescriptionWrapper>
                             <SButtonWrapper>
-                                <Button
-                                    white={true}
-                                    onClick={() => dispatch(dataSlice.actions.modalDataFetchSuccess(null))}
-                                >
+                                <Button white={true} onClick={handleClearData}>
                                     Закрыть
                                 </Button>
                                 <Button white={false}>Купить</Button>

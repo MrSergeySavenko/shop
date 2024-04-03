@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react';
 
-import styles from './ColorBtn.module.scss';
 import { SColorWrapper } from './ColorBtn.styled';
 
 interface IProp {
@@ -12,10 +11,6 @@ interface IProp {
 export const ColorBtn: React.FC<IProp> = ({ bagColor, color, setColor }) => {
     const [activeColor, setActiveColor] = useState(false);
 
-    const handleChangeActiveColor = () => {
-        setColor(bagColor);
-    };
-
     useEffect(() => {
         if (bagColor === color) {
             setActiveColor(true);
@@ -23,6 +18,10 @@ export const ColorBtn: React.FC<IProp> = ({ bagColor, color, setColor }) => {
             setActiveColor(false);
         }
     }, [color]);
+
+    const handleChangeActiveColor = () => {
+        setColor(bagColor);
+    };
 
     return (
         <SColorWrapper

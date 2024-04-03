@@ -1,6 +1,5 @@
 import React from 'react';
 
-import styles from './Button.module.scss';
 import { SWrapper } from './Button.styled';
 
 interface IProp {

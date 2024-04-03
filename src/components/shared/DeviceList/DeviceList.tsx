@@ -1,7 +1,7 @@
 import React from 'react';
 
-import { IDataEelement, IDataInfo } from '../../../__data__/models/models';
-import { DeviseCard } from '../DeviseCard/DeviseCard';
+import { IDataInfo } from '../../../__data__/models/models';
+import { DeviceCard } from '../DeviceCard/DeviceCard';
 import { SWrapper } from './DeviceList.styled';
 
 interface IProps {
@@ -10,7 +10,7 @@ interface IProps {
 
 export const DeviceList: React.FC<IProps> = ({ dataInfo }) => {
     const renderDeviseCard = () => {
-        return dataInfo.map((infoCard: IDataInfo, i: number) => <DeviseCard infoCard={infoCard} />);
+        return dataInfo.map((infoCard: IDataInfo, i: number) => <DeviceCard infoCard={infoCard} />);
     };
 
     return <SWrapper>{renderDeviseCard()}</SWrapper>;
