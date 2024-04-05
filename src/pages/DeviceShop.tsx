@@ -9,11 +9,16 @@ import { DeviceList } from '../components/shared/DeviceList/DeviceList';
 import { ModalWindow } from '../components/comp/ModalWindow/ModalWindow';
 import { SAllWrapper, SBlockHeader, SMainWrapper } from './DeviceShop.styled';
 import { stringify } from 'querystring';
+import { BackToTopBtn } from '../components/comp/BackToTopBtn/BackToTopBtn';
 
 export const DeviceShop: React.FC = () => {
-    const { data, theme } = useSelector((state: RootState) => state.shopData);
+    const { data, theme, modalActive } = useSelector((state: RootState) => state.shopData);
 
     const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(fetchDataLow() as any);
+    }, []);
 
     const renderDevises = () =>
         data &&
@@ -28,17 +33,14 @@ export const DeviceShop: React.FC = () => {
             );
         });
 
-    useEffect(() => {
-        dispatch(fetchDataLow() as any);
-    }, []);
-
     return (
-        <SAllWrapper theme={theme}>
+        <SAllWrapper theme={theme} modalActive={modalActive}>
             <SMainWrapper>
                 <NavBar />
                 {renderDevises()}
                 <ModalWindow />
             </SMainWrapper>
+            {window.scrollY > 0 ? <BackToTopBtn /> : <></>}
         </SAllWrapper>
     );
 };

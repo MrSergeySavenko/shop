@@ -33,4 +33,5 @@ export interface IDataState {
     isError: boolean;
     modalError: boolean;
     theme: boolean;
+    modalActive: boolean;
 }

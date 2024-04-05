@@ -60,7 +60,10 @@ export const ModalWindow: React.FC = () => {
             return <ColorBtn bagColor={colorItem} color={color} setColor={setColor} />;
         });
 
-    const handleClearData = () => dispatch(dataSlice.actions.modalDataFetchSuccess(null));
+    const handleClearData = () => {
+        dispatch(dataSlice.actions.modalDataFetchSuccess(null));
+        document.body.style.overflowY = 'auto';
+    };
 
     const hadleStopPropagation = (e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation();
 

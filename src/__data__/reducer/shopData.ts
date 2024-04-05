@@ -10,6 +10,7 @@ const initialState: IDataState = {
     isError: false,
     modalError: false,
     theme: false,
+    modalActive: false,
 };
 
 export const dataSlice = createSlice({
@@ -33,6 +34,9 @@ export const dataSlice = createSlice({
         },
         modalDataFetchSuccess(state: Draft<IDataState>, action: PayloadAction<IDataDetails | null>) {
             return { ...state, modalLoading: false, modalData: action.payload };
+        },
+        modalActiveChange(state) {
+            return { ...state, modalActive: !state.modalActive };
         },
         changeTheme(state) {
             return { ...state, theme: !state.theme };

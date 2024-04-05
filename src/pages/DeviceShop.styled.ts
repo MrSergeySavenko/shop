@@ -2,10 +2,13 @@ import styled from '@emotion/styled';
 
 interface IProp {
     theme: boolean;
+    modalActive?: boolean;
 }
 
-export const SAllWrapper = styled('div')(({ theme }: IProp) => ({
+export const SAllWrapper = styled('div')(({ theme, modalActive }: IProp) => ({
+    position: 'relative',
     backgroundColor: theme ? '#23272F' : '#fff',
+    overflowY: modalActive ? 'hidden' : 'auto',
 }));
 
 export const SMainWrapper = styled('div')(() => ({
