@@ -1,13 +1,21 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 import { RootState } from '../../../__data__/store';
 import { IDataEelement } from '../../../__data__/models/models';
-import { SBurgerMenu, SBurgerRow, SLink, SLinkWrapper, SNavBarWrapper, SThemeBtn } from './NavBar.styled';
+import {
+    SBurgerMenu,
+    SBurgerRow,
+    SCloseBurger,
+    SLink,
+    SLinkWrapper,
+    SNavBarWrapper,
+    SThemeBtn,
+} from './NavBar.styled';
 import { dataSlice } from '../../../__data__/reducer';
 
 export const NavBar: React.FC = () => {
-    const { data, theme } = useSelector((state: RootState) => state.shopData);
+    const { data, theme, isLoading } = useSelector((state: RootState) => state.shopData);
 
     const [open, setOpen] = useState(false);
 
@@ -17,7 +25,7 @@ export const NavBar: React.FC = () => {
         data &&
         Object.values(data).map((deviseInfo: IDataEelement, i: number) => {
             return (
-                <SLink href={String(i)} theme={theme}>
+                <SLink href={String(i)} theme={theme} open={open}>
                     {deviseInfo.title}
                 </SLink>
             );
@@ -27,16 +35,26 @@ export const NavBar: React.FC = () => {
 
     const handleOpenBurgerMenu = () => setOpen(!open);
 
+    useEffect(() => {
+        console.log(open);
+    }, [open]);
+
     return (
-        <SNavBarWrapper theme={theme}>
-            <SLinkWrapper>{getLinks()}</SLinkWrapper>
+        <SNavBarWrapper theme={theme} open={open}>
             <SBurgerMenu open={open} onClick={handleOpenBurgerMenu}>
-                <SBurgerRow />
-                <SBurgerRow />
-                <SBurgerRow />
-                <SBurgerRow />
+                {open ? (
+                    <SCloseBurger src={theme ? '/CloseWhite.svg' : '/Close.svg'} open={open} />
+                ) : (
+                    <>
+                        <SBurgerRow theme={theme} />
+                        <SBurgerRow theme={theme} />
+                        <SBurgerRow theme={theme} />
+                        <SBurgerRow theme={theme} />
+                    </>
+                )}
             </SBurgerMenu>
-            <SThemeBtn onClick={handleChangeTheme} theme={theme} />
+            <SLinkWrapper open={open}>{getLinks()}</SLinkWrapper>
+            <SThemeBtn onClick={handleChangeTheme} theme={theme} open={open} />
         </SNavBarWrapper>
     );
 };

@@ -1,33 +1,36 @@
 import styled from '@emotion/styled';
 
 interface IProp {
-    theme: boolean;
+    theme?: boolean;
+    open?: boolean;
 }
 
-export const SNavBarWrapper = styled('div')(({ theme }: IProp) => ({
-    position: 'relative',
+export const SNavBarWrapper = styled('div')(({ theme, open }: IProp) => ({
+    position: open ? 'absolute' : 'relative',
     padding: '16px 16px',
     backgroundColor: theme ? '#363B44' : '#f3f4f6',
     borderRadius: '16px',
     display: 'flex',
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
+    flexDirection: open ? 'column' : 'row',
+    justifyContent: open ? 'flex-start' : 'center',
+    alignItems: open ? 'flex-start' : 'center',
     marginBottom: '56px',
     boxShadow: theme ? 'none' : '7px 5px 5px #ebedf0',
 
     '@media (max-width: 601px)': {
         justifyContent: 'flex-start',
+        width: open ? '100%' : 'auto',
     },
 }));
 
-export const SLinkWrapper = styled('div')(() => ({
+export const SLinkWrapper = styled('div')(({ open }: IProp) => ({
     display: 'flex',
     flexDirection: 'row',
     justifyContent: 'space-between',
 
     '@media (max-width: 601px)': {
-        display: 'none',
+        display: open ? 'flex' : 'none',
+        flexDirection: 'column',
     },
 }));
 
@@ -50,8 +53,8 @@ export const SBurgerMenu = styled('div')(({ open }: INavProp) => ({
     },
 }));
 
-export const SBurgerRow = styled('div')(() => ({
-    border: '1px solid rgb(0, 0, 0)',
+export const SBurgerRow = styled('div')(({ theme }: IProp) => ({
+    border: theme ? '1px solid #fff' : '1px solid #000',
     borderRadius: '10px',
     height: '0px',
 
@@ -60,7 +63,13 @@ export const SBurgerRow = styled('div')(() => ({
     },
 }));
 
-export const SLink = styled('a')(({ theme }: IProp) => ({
+export const SCloseBurger = styled('img')(({ open }: IProp) => ({
+    width: '18px',
+    height: '18px',
+    marginBottom: open ? '24px' : '0',
+}));
+
+export const SLink = styled('a')(({ theme, open }: IProp) => ({
     color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '16px',
@@ -71,13 +80,15 @@ export const SLink = styled('a')(({ theme }: IProp) => ({
     marginRight: '32px',
     textDecoration: 'none',
     cursor: 'pointer',
+    marginBottom: open ? '16px' : '0',
 
-    '&:lastChild': {
+    '&:last-child': {
         marginRight: '0',
+        marginBottom: '0px',
     },
 }));
 
-export const SThemeBtn = styled('div')(({ theme }: IProp) => ({
+export const SThemeBtn = styled('div')(({ theme, open }: IProp) => ({
     position: 'absolute',
     width: theme ? '19px' : '24px',
     height: theme ? '18px' : '24px',
@@ -89,4 +100,5 @@ export const SThemeBtn = styled('div')(({ theme }: IProp) => ({
     backgroundPosition: 'center',
     backgroundSize: '80%',
     cursor: 'pointer',
+    display: open ? 'none' : 'block',
 }));

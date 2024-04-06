@@ -8,11 +8,21 @@ export const SBackplateWrapper = styled('div')(() => ({
     left: '0',
     backgroundColor: 'rgba(0, 0, 0, 0.64)',
     alignItems: 'center',
+    overflowY: 'auto',
 }));
 
 interface IProp {
     theme: boolean;
 }
+
+export const SLoadingText = styled('p')(({ theme }: IProp) => ({
+    color: theme ? '#fff' : '#000',
+    fontFamily: 'Inter',
+    fontSize: '32px',
+    fontWeight: '500',
+    lineHeight: '39px',
+    letterSpacing: '0',
+}));
 
 export const SWrapper = styled('div')(({ theme }: IProp) => ({
     maxWidth: '1200px',

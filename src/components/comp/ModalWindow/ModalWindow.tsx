@@ -22,6 +22,7 @@ import {
     SHeaderWrapper,
     SImg,
     SImgConteiner,
+    SLoadingText,
     SMinusConteiner,
     SNameText,
     SPlusConteiner,
@@ -34,7 +35,7 @@ import {
 const portal = document.getElementById('portal');
 
 export const ModalWindow: React.FC = () => {
-    const { modalData, theme } = useSelector((state: RootState) => state.shopData);
+    const { modalData, theme, modalLoading } = useSelector((state: RootState) => state.shopData);
 
     const [count, setCount] = useState(1);
     const [color, setColor] = useState('');
@@ -66,6 +67,17 @@ export const ModalWindow: React.FC = () => {
     };
 
     const hadleStopPropagation = (e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation();
+
+    const renderLoadingText = () =>
+        modalLoading ? (
+            <SBackplateWrapper onClick={handleClearData}>
+                <SWrapper theme={theme} onClick={hadleStopPropagation}>
+                    <SLoadingText theme={theme}>Пожалуйста. подождите, идет загрузка</SLoadingText>
+                </SWrapper>
+            </SBackplateWrapper>
+        ) : (
+            <></>
+        );
 
     return createPortal(
         <>
@@ -126,7 +138,7 @@ export const ModalWindow: React.FC = () => {
                     </SWrapper>
                 </SBackplateWrapper>
             ) : (
-                <></>
+                renderLoadingText()
             )}
         </>,
         portal as HTMLElement

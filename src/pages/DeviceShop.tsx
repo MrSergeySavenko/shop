@@ -12,7 +12,7 @@ import { stringify } from 'querystring';
 import { BackToTopBtn } from '../components/comp/BackToTopBtn/BackToTopBtn';
 
 export const DeviceShop: React.FC = () => {
-    const { data, theme, modalActive } = useSelector((state: RootState) => state.shopData);
+    const { data, theme, modalActive, isLoading } = useSelector((state: RootState) => state.shopData);
 
     const dispatch = useDispatch();
 
@@ -33,14 +33,19 @@ export const DeviceShop: React.FC = () => {
             );
         });
 
-    return (
-        <SAllWrapper theme={theme} modalActive={modalActive}>
-            <SMainWrapper>
-                <NavBar />
-                {renderDevises()}
-                <ModalWindow />
-            </SMainWrapper>
-            {window.scrollY > 0 ? <BackToTopBtn /> : <></>}
-        </SAllWrapper>
-    );
+    const renderPage = () =>
+        isLoading ? (
+            <></>
+        ) : (
+            <SAllWrapper theme={theme} modalActive={modalActive}>
+                <SMainWrapper>
+                    <NavBar />
+                    {renderDevises()}
+                    <ModalWindow />
+                </SMainWrapper>
+                {window.scrollY > 0 ? <BackToTopBtn /> : <></>}
+            </SAllWrapper>
+        );
+
+    return renderPage();
 };
