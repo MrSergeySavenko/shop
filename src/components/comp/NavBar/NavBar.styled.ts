@@ -17,6 +17,7 @@ export const SNavBarWrapper = styled('div')(({ theme, open, width }: IProp) => (
     alignItems: open ? 'flex-start' : 'center',
     marginBottom: '56px',
     boxShadow: theme ? 'none' : '7px 5px 5px #ebedf0',
+    top: '8px',
 
     '@media (max-width: 601px)': {
         justifyContent: 'flex-start',

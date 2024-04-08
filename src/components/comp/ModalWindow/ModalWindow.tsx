@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { RootState } from '../../../__data__/store';
+
 import { createPortal } from 'react-dom';
-import { Button } from '../../shared/Button/Button';
+
 import { ColorBtn } from '../ColorBtn/ColorBtn';
+import { RootState } from '../../../__data__/store';
 import { dataSlice } from '../../../__data__/reducer';
+
+import { Button } from '../../shared/Button/Button';
 import {
     SBackplateWrapper,
     SBottomWrapper,
@@ -31,7 +34,9 @@ import {
     SWrapper,
     SWrapperForColumn,
 } from './ModalWindow.styled';
+
 import { fetchUsersChoose } from './utils';
+
 import { IColor } from '../../../__data__/models/models';
 
 const portal = document.getElementById('portal');

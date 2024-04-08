@@ -9,11 +9,6 @@ interface IProp {
 }
 
 export const Button: React.FC<IProp> = ({ onClick, children, white }) => {
-    //функция ждя открытия окна покупки, пока ссылки нет
-    const hendleModalOpen = () => {};
-
-    //функция для открытия модалки, можно обьединить с первой
-
     return (
         <SWrapper white={white} onClick={onClick}>
             {children}

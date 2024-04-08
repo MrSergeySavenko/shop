@@ -1,6 +1,7 @@
 import React from 'react';
 
 import { IDataInfo } from '../../../__data__/models/models';
+
 import { DeviceCard } from '../DeviceCard/DeviceCard';
 import { SWrapper } from './DeviceList.styled';
 

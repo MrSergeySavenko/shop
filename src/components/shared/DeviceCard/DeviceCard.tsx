@@ -1,13 +1,15 @@
 import React from 'react';
 
-import { IDataInfo } from '../../../__data__/models/models';
-import { Button } from '../Button/Button';
 import { useDispatch, useSelector } from 'react-redux';
+import { IDataInfo } from '../../../__data__/models/models';
+
 import { fetchDataModal } from '../../../__data__/actions/storeData.actions';
+
+import { Button } from '../Button/Button';
 import { SCost, SDate, SImg, SImgWrapper, SInfoWrapper, SName, SWrapper } from './DeviceCard.styled';
+
 import { RootState } from '../../../__data__/store';
 import { dataSlice } from '../../../__data__/reducer';
-import { log } from 'console';
 
 interface IProps {
     infoCard: IDataInfo;

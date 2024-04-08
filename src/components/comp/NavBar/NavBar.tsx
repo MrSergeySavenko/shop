@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../../../__data__/store';
+
 import { IDataEelement } from '../../../__data__/models/models';
 import {
     SBurgerMenu,
@@ -12,12 +12,18 @@ import {
     SNavBarWrapper,
     SThemeBtn,
 } from './NavBar.styled';
+
+import { RootState } from '../../../__data__/store';
 import { dataSlice } from '../../../__data__/reducer';
 
-export const NavBar: React.FC = () => {
+interface IProp {
+    open: boolean;
+    setOpen: (o: boolean) => void;
+}
+
+export const NavBar: React.FC<IProp> = ({ open, setOpen }) => {
     const { data, theme, isLoading } = useSelector((state: RootState) => state.shopData);
 
-    const [open, setOpen] = useState(false);
     const [width, setWidth] = useState(0);
 
     const dispath = useDispatch();

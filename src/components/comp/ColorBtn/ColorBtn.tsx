@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { SColorWrapper } from './ColorBtn.styled';
+
 import { IColor } from '../../../__data__/models/models';
 
 interface IProp {
