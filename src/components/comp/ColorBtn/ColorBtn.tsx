@@ -1,14 +1,16 @@
 import React, { useEffect, useState } from 'react';
 
 import { SColorWrapper } from './ColorBtn.styled';
+import { IColor } from '../../../__data__/models/models';
 
 interface IProp {
     bagColor: string;
     color: string;
-    setColor: (col: string) => void;
+    name: string;
+    setColor: (col: IColor) => void;
 }
 
-export const ColorBtn: React.FC<IProp> = ({ bagColor, color, setColor }) => {
+export const ColorBtn: React.FC<IProp> = ({ bagColor, color, setColor, name }) => {
     const [activeColor, setActiveColor] = useState(false);
 
     useEffect(() => {
@@ -17,10 +19,11 @@ export const ColorBtn: React.FC<IProp> = ({ bagColor, color, setColor }) => {
         } else {
             setActiveColor(false);
         }
+        console.log(color);
     }, [color]);
 
     const handleChangeActiveColor = () => {
-        setColor(bagColor);
+        setColor({ color: bagColor, name: name });
     };
 
     return (

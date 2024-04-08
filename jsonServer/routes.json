@@ -4,6 +4,7 @@
     },
     "customRoutes": [
         { "pattern": "/products", "scriptPath": "/products" },
-        { "pattern": "/products/details", "scriptPath": "/details" }
+        { "pattern": "/products/details", "scriptPath": "/details" },
+        { "pattern": "/purchase", "scriptPath": "/purchase" }
     ]
 }

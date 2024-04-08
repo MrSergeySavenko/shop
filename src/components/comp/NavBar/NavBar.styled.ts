@@ -3,9 +3,10 @@ import styled from '@emotion/styled';
 interface IProp {
     theme?: boolean;
     open?: boolean;
+    width?: number;
 }
 
-export const SNavBarWrapper = styled('div')(({ theme, open }: IProp) => ({
+export const SNavBarWrapper = styled('div')(({ theme, open, width }: IProp) => ({
     position: open ? 'absolute' : 'relative',
     padding: '16px 16px',
     backgroundColor: theme ? '#363B44' : '#f3f4f6',
@@ -19,7 +20,7 @@ export const SNavBarWrapper = styled('div')(({ theme, open }: IProp) => ({
 
     '@media (max-width: 601px)': {
         justifyContent: 'flex-start',
-        width: open ? '100%' : 'auto',
+        width: open ? `${width}px` : 'auto',
     },
 }));
 

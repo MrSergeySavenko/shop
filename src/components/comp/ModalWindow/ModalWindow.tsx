@@ -13,8 +13,8 @@ import {
     SCloseBlockImg,
     SColorConteiner,
     SColumnWrapper,
-    SConst,
     SContentWrapper,
+    SCost,
     SCounterContainer,
     SCounterWrapper,
     SDescriptionWrapper,
@@ -31,6 +31,8 @@ import {
     SWrapper,
     SWrapperForColumn,
 } from './ModalWindow.styled';
+import { fetchUsersChoose } from './utils';
+import { IColor } from '../../../__data__/models/models';
 
 const portal = document.getElementById('portal');
 
@@ -38,13 +40,15 @@ export const ModalWindow: React.FC = () => {
     const { modalData, theme, modalLoading } = useSelector((state: RootState) => state.shopData);
 
     const [count, setCount] = useState(1);
-    const [color, setColor] = useState('');
+    const [color, setColor] = useState<IColor>({ name: '', color: '' });
+    const [ok, setOk] = useState(false);
 
     const dispatch = useDispatch();
 
     useEffect(() => {
+        console.log(modalData);
         if (modalData) {
-            setColor(modalData?.colors[0]);
+            setColor({ color: modalData?.colors[0].color, name: modalData?.colors[0].name });
         }
     }, [modalData]);
 
@@ -57,8 +61,15 @@ export const ModalWindow: React.FC = () => {
     };
 
     const renderColorBtn = () =>
-        modalData?.colors.map((colorItem: string) => {
-            return <ColorBtn bagColor={colorItem} color={color} setColor={setColor} />;
+        modalData?.colors.map((colorItem: IColor) => {
+            return (
+                <ColorBtn
+                    bagColor={colorItem.color}
+                    color={color.color}
+                    name={colorItem.name}
+                    setColor={setColor}
+                />
+            );
         });
 
     const handleClearData = () => {
@@ -67,6 +78,19 @@ export const ModalWindow: React.FC = () => {
     };
 
     const hadleStopPropagation = (e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation();
+
+    const handleFetchUserChoose = async () => {
+        if (modalData) {
+            setOk(
+                await fetchUsersChoose({
+                    name: modalData?.name,
+                    cost: String(modalData.cost),
+                    count: count,
+                    color: color.name,
+                })
+            );
+        }
+    };
 
     const renderLoadingText = () =>
         modalLoading ? (
@@ -119,20 +143,29 @@ export const ModalWindow: React.FC = () => {
                                 </SColumnWrapper>
                                 <SColumnWrapper>
                                     <SNameText>Цена</SNameText>
-                                    <SConst theme={theme}>{`${modalData.cost} ${'₽'}`}</SConst>
+                                    <SCost theme={theme}>{`${modalData.cost} ${'₽'}`}</SCost>
                                 </SColumnWrapper>
                             </SWrapperForColumn>
                         </SContentWrapper>
                         <SBottomWrapper>
                             <SDescriptionWrapper>
                                 <SNameText>Комментарий к заказу</SNameText>
-                                <STextarea theme={theme} />
+                                <STextarea
+                                    theme={theme}
+                                    placeholder={
+                                        ok
+                                            ? 'Все в порядке, ваш запрос отправлен в корзину!'
+                                            : 'Что-то пошло не так, возможно вы не выбрали все позиции'
+                                    }
+                                />
                             </SDescriptionWrapper>
                             <SButtonWrapper>
                                 <Button white={true} onClick={handleClearData}>
                                     Закрыть
                                 </Button>
-                                <Button white={false}>Купить</Button>
+                                <Button onClick={handleFetchUserChoose} white={false}>
+                                    Купить
+                                </Button>
                             </SButtonWrapper>
                         </SBottomWrapper>
                     </SWrapper>

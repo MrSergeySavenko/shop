@@ -1,6 +1,14 @@
 {
     "name": "13.3\" Ноутбук Apple MacBook Air 13 2020 2560x1600",
     "imgUrl": "/Notebook.png",
-    "colors": ["#FFF", "#FFCEB9", "#000", "#D9D9D9", "#FFC0FC", "#B6DCFF", "#B9D6AB"],
+    "colors": [
+        { "color": "#FFF", "name": "White" },
+        { "color": "#FFCEB9", "name": "Peach" },
+        { "color": "#000", "name": "Black" },
+        { "color": "#D9D9D9", "name": "Silver" },
+        { "color": "#FFC0FC", "name": "Pink" },
+        { "color": "#B6DCFF", "name": "Blue" },
+        { "color": "#B9D6AB", "name": "GrasGreen" }
+    ],
     "cost": 78990
 }

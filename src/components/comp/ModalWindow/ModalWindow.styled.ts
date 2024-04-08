@@ -117,7 +117,6 @@ export const SWrapperForColumn = styled('div')(() => ({
 
         '&:last-child': {
             flexDirection: 'row',
-            justifyContent: 'space-between',
         },
     },
 }));
@@ -126,6 +125,7 @@ export const SColumnWrapper = styled('div')(() => ({
     display: 'flex',
     flexDirection: 'column',
     marginRight: '24px',
+    width: 'auto',
 
     '@media (max-width: 560px)': {
         marginBottom: '16px',
@@ -199,11 +199,11 @@ export const STextarea = styled('textarea')(({ theme }: IProp) => ({
     letterSpacing: '0',
 
     '@media (max-width: 1001px)': {
-        maxWidth: '100%',
+        width: 'auto',
     },
 }));
 
-export const SConst = styled('p')(({ theme }: IProp) => ({
+export const SCost = styled('p')(({ theme }: IProp) => ({
     color: theme ? '#fff' : '#000',
     fontFamily: 'Inter',
     fontSize: '24px',
@@ -217,8 +217,12 @@ export const SCounterWrapper = styled('div')(() => ({
     flexDirection: 'row',
     marginRight: '112px',
 
-    '@media (max-width: 560px)': {
+    '@media (max-width: 1001px)': {
         marginRight: '0px',
+    },
+
+    '@media (max-width: 560px)': {
+        marginRight: '32px',
     },
 }));
 
@@ -226,7 +230,7 @@ export const SCounterContainer = styled('div')(({ theme }: IProp) => ({
     padding: '8px 12.5px',
     borderTop: theme ? '1px solid #919FAB' : '1px solid #919fab',
     borderBottom: theme ? '1px solid #919FAB' : '1px solid #919fab',
-    color: theme ? '#FFFFFF' : '#0000',
+    color: theme ? '#FFFFFF' : '#000',
     fontFamily: 'Inter',
     fontSize: '16px',
     fontWeight: '400',

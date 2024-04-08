@@ -18,10 +18,15 @@ export interface IData {
     headphone: IDataEelement;
 }
 
+export interface IColor {
+    color: string;
+    name: string;
+}
+
 export interface IDataDetails {
     name: string;
     imgUrl: string;
-    colors: Array<string>;
+    colors: Array<IColor>;
     cost: number;
 }
 

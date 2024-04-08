@@ -18,6 +18,7 @@ export const NavBar: React.FC = () => {
     const { data, theme, isLoading } = useSelector((state: RootState) => state.shopData);
 
     const [open, setOpen] = useState(false);
+    const [width, setWidth] = useState(0);
 
     const dispath = useDispatch();
 
@@ -36,11 +37,13 @@ export const NavBar: React.FC = () => {
     const handleOpenBurgerMenu = () => setOpen(!open);
 
     useEffect(() => {
-        console.log(open);
-    }, [open]);
+        if (document.documentElement.clientWidth <= 601) {
+            setWidth(document.documentElement.clientWidth - 64);
+        }
+    }, [document.documentElement.clientWidth]);
 
     return (
-        <SNavBarWrapper theme={theme} open={open}>
+        <SNavBarWrapper theme={theme} open={open} width={width}>
             <SBurgerMenu open={open} onClick={handleOpenBurgerMenu}>
                 {open ? (
                     <SCloseBurger src={theme ? '/CloseWhite.svg' : '/Close.svg'} open={open} />
