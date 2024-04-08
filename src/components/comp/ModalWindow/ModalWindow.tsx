@@ -38,6 +38,7 @@ import {
 import { fetchUsersChoose } from './utils';
 
 import { IColor } from '../../../__data__/models/models';
+import { uniqueKey } from '../../../__data__/utils/utils';
 
 const portal = document.getElementById('portal');
 
@@ -66,13 +67,14 @@ export const ModalWindow: React.FC = () => {
     };
 
     const renderColorBtn = () =>
-        modalData?.colors.map((colorItem: IColor) => {
+        modalData?.colors.map((colorItem: IColor, i: number) => {
             return (
                 <ColorBtn
                     bagColor={colorItem.color}
                     color={color.color}
                     name={colorItem.name}
                     setColor={setColor}
+                    key={uniqueKey(colorItem.name, i)}
                 />
             );
         });

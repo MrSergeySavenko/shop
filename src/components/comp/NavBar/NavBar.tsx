@@ -15,6 +15,7 @@ import {
 
 import { RootState } from '../../../__data__/store';
 import { dataSlice } from '../../../__data__/reducer';
+import { uniqueKey } from '../../../__data__/utils/utils';
 
 interface IProp {
     open: boolean;
@@ -22,7 +23,7 @@ interface IProp {
 }
 
 export const NavBar: React.FC<IProp> = ({ open, setOpen }) => {
-    const { data, theme, isLoading } = useSelector((state: RootState) => state.shopData);
+    const { data, theme } = useSelector((state: RootState) => state.shopData);
 
     const [width, setWidth] = useState(0);
 
@@ -32,7 +33,7 @@ export const NavBar: React.FC<IProp> = ({ open, setOpen }) => {
         data &&
         Object.values(data).map((deviseInfo: IDataEelement, i: number) => {
             return (
-                <SLink href={String(i)} theme={theme} open={open}>
+                <SLink key={uniqueKey(deviseInfo.title, i)} href={String(i)} theme={theme} open={open}>
                     {deviseInfo.title}
                 </SLink>
             );

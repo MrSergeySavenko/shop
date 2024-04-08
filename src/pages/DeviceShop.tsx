@@ -11,6 +11,7 @@ import { DeviceList } from '../components/shared/DeviceList/DeviceList';
 import { ModalWindow } from '../components/comp/ModalWindow/ModalWindow';
 import { SAllWrapper, SBlockHeader, SMainWrapper } from './DeviceShop.styled';
 import { BackToTopBtn } from '../components/comp/BackToTopBtn/BackToTopBtn';
+import { uniqueKey } from '../__data__/utils/utils';
 
 export const DeviceShop: React.FC = () => {
     const [open, setOpen] = useState(false);
@@ -28,10 +29,10 @@ export const DeviceShop: React.FC = () => {
         Object.values(data).map((deviseInfo: IDataEelement, i: number) => {
             return (
                 <>
-                    <SBlockHeader id={String(i)} theme={theme}>
+                    <SBlockHeader key={uniqueKey(deviseInfo.title, i)} id={String(i)} theme={theme}>
                         {deviseInfo.title}
                     </SBlockHeader>
-                    <DeviceList dataInfo={deviseInfo.info} />
+                    <DeviceList key={uniqueKey(deviseInfo.info, i)} dataInfo={deviseInfo.info} />
                 </>
             );
         });
