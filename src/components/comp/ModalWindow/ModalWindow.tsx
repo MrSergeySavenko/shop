@@ -5,8 +5,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { createPortal } from 'react-dom';
 
 import { ColorBtn } from '../ColorBtn/ColorBtn';
-import { RootState } from '../../../__data__/store';
-import { dataSlice } from '../../../__data__/reducer';
+import { RootState } from '../../../__data__/store/store';
+import { dataSlice } from '../../../__data__/store/reducer';
 
 import { Button } from '../../shared/Button/Button';
 import {

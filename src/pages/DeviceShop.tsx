@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
-import { RootState } from '../__data__/store';
+import { RootState } from '../__data__/store/store';
 
-import { fetchDataLow } from '../__data__/actions/storeData.actions';
+import { fetchDataLow } from '../__data__/store/actions/storeData.actions';
 
 import { NavBar } from '../components/comp/NavBar/NavBar';
 import { IDataEelement } from '../__data__/models/models';

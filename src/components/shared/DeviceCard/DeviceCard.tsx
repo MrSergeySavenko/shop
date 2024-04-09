@@ -3,13 +3,13 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { IDataInfo } from '../../../__data__/models/models';
 
-import { fetchDataModal } from '../../../__data__/actions/storeData.actions';
+import { fetchDataModal } from '../../../__data__/store/actions/storeData.actions';
 
 import { Button } from '../Button/Button';
 import { SCost, SDate, SImg, SImgWrapper, SInfoWrapper, SName, SWrapper } from './DeviceCard.styled';
 
-import { RootState } from '../../../__data__/store';
-import { dataSlice } from '../../../__data__/reducer';
+import { RootState } from '../../../__data__/store/store';
+import { dataSlice } from '../../../__data__/store/reducer';
 import { getDate } from '../../../__data__/utils/utils';
 
 interface IProps {

@@ -12,8 +12,8 @@ import {
     SThemeBtn,
 } from './NavBar.styled';
 
-import { RootState } from '../../../__data__/store';
-import { dataSlice } from '../../../__data__/reducer';
+import { RootState } from '../../../__data__/store/store';
+import { dataSlice } from '../../../__data__/store/reducer';
 import { uniqueKey } from '../../../__data__/utils/utils';
 import { IDataEelement } from '../../../__data__/models/models';
 

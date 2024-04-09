@@ -1,6 +1,6 @@
 import { createSlice, Draft, PayloadAction } from '@reduxjs/toolkit';
 
-import { IDataState, IData, IDataDetails } from '../models/models';
+import { IDataState, IData, IDataDetails } from '../../models/models';
 
 const initialState: IDataState = {
     data: null,
