@@ -16,11 +16,10 @@ export const fetchDataLow = () => async (dispatch: AppDispatch) => {
         }
     } catch (err: unknown) {
         dispatch(dataSlice.actions.dataFetchFailure(err as string));
-        console.error(err);
     }
 };
 
-export const fetchDataModal = (req: IDataInfo) => async (dispatch: AppDispatch) => {
+export const fetchDataModal = (req: { id: string }) => async (dispatch: AppDispatch) => {
     try {
         dispatch(dataSlice.actions.modalDataFetch());
 
@@ -41,6 +40,5 @@ export const fetchDataModal = (req: IDataInfo) => async (dispatch: AppDispatch) 
         }
     } catch (err: unknown) {
         dispatch(dataSlice.actions.modalDataFetchFailure(err as string));
-        console.error(err);
     }
 };

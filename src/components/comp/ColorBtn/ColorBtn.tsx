@@ -20,7 +20,6 @@ export const ColorBtn: React.FC<IProp> = ({ bagColor, color, setColor, name }) =
         } else {
             setActiveColor(false);
         }
-        console.log(color);
     }, [color]);
 
     const handleChangeActiveColor = () => {

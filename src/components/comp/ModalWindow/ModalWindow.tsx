@@ -35,10 +35,11 @@ import {
     SWrapperForColumn,
 } from './ModalWindow.styled';
 
-import { fetchUsersChoose } from './utils';
+import { fetchUsersChoose } from '../../../__data__/details/details';
 
 import { IColor } from '../../../__data__/models/models';
 import { uniqueKey } from '../../../__data__/utils/utils';
+import { useAppDispatch } from '../../../__data__/hook/useRedux';
 
 const portal = document.getElementById('portal');
 
@@ -49,20 +50,21 @@ export const ModalWindow: React.FC = () => {
     const [color, setColor] = useState<IColor>({ name: '', color: '' });
     const [ok, setOk] = useState(false);
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
-        console.log(modalData);
         if (modalData) {
             setColor({ color: modalData?.colors[0].color, name: modalData?.colors[0].name });
         }
     }, [modalData]);
 
     const handleColculateCount = (plus: boolean) => {
-        if (count >= 1) {
-            plus ? setCount(count + 1) : setCount(count - 1);
-        } else {
-            setCount(1);
+        if (plus) {
+            return setCount(count + 1);
+        }
+
+        if (count !== 1) {
+            setCount(count - 1);
         }
     };
 

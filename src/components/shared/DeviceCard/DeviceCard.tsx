@@ -10,21 +10,21 @@ import { SCost, SDate, SImg, SImgWrapper, SInfoWrapper, SName, SWrapper } from '
 
 import { RootState } from '../../../__data__/store';
 import { dataSlice } from '../../../__data__/reducer';
+import { getDate } from '../../../__data__/utils/utils';
 
 interface IProps {
     infoCard: IDataInfo;
 }
 
 export const DeviceCard: React.FC<IProps> = ({ infoCard }) => {
-    const { theme, modalActive } = useSelector((state: RootState) => state.shopData);
+    const { theme } = useSelector((state: RootState) => state.shopData);
 
     const dispatch = useDispatch();
 
     const handleOpenModal = () => {
-        dispatch(fetchDataModal(infoCard) as any);
+        dispatch(fetchDataModal({ id: infoCard.id }) as any);
         dispatch(dataSlice.actions.modalActiveChange());
         document.body.style.overflowY = 'hidden';
-        console.log(modalActive);
     };
 
     return (
@@ -33,7 +33,7 @@ export const DeviceCard: React.FC<IProps> = ({ infoCard }) => {
                 <SImg src={infoCard.imgUrl} />
             </SImgWrapper>
             <SInfoWrapper>
-                <SDate>{infoCard.date}</SDate>
+                <SDate>{getDate(infoCard.date)}</SDate>
                 <SCost theme={theme}>{`${infoCard.cost} ${'₽'}`}</SCost>
                 <SName theme={theme}>{infoCard.name}</SName>
             </SInfoWrapper>

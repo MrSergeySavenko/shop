@@ -11,11 +11,11 @@ interface IProps {
 }
 
 export const DeviceList: React.FC<IProps> = ({ dataInfo }) => {
-    const renderDeviseCard = () => {
-        return dataInfo.map((infoCard: IDataInfo, i: number) => (
-            <DeviceCard key={uniqueKey(infoCard.name, i)} infoCard={infoCard} />
-        ));
-    };
-
-    return <SWrapper>{renderDeviseCard()}</SWrapper>;
+    return (
+        <SWrapper>
+            {dataInfo.map((infoCard: IDataInfo, i: number) => (
+                <DeviceCard key={uniqueKey(infoCard.name, i)} infoCard={infoCard} />
+            ))}
+        </SWrapper>
+    );
 };

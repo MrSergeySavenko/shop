@@ -23,7 +23,5 @@ export const fetchUsersChoose = async (req: IUsersInfo) => {
             console.log(data);
             return data;
         }
-    } catch (err: unknown) {
-        console.error(err);
-    }
+    } catch (err: unknown) {}
 };

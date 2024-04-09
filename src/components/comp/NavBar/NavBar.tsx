@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
-import { IDataEelement } from '../../../__data__/models/models';
 import {
     SBurgerMenu,
     SBurgerRow,
@@ -16,6 +15,7 @@ import {
 import { RootState } from '../../../__data__/store';
 import { dataSlice } from '../../../__data__/reducer';
 import { uniqueKey } from '../../../__data__/utils/utils';
+import { IDataEelement } from '../../../__data__/models/models';
 
 interface IProp {
     open: boolean;
@@ -33,7 +33,7 @@ export const NavBar: React.FC<IProp> = ({ open, setOpen }) => {
         data &&
         Object.values(data).map((deviseInfo: IDataEelement, i: number) => {
             return (
-                <SLink key={uniqueKey(deviseInfo.title, i)} href={String(i)} theme={theme} open={open}>
+                <SLink key={uniqueKey(deviseInfo.title, i)} href={`#${String(i)}`} theme={theme} open={open}>
                     {deviseInfo.title}
                 </SLink>
             );

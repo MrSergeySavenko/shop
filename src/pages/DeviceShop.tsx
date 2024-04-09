@@ -12,13 +12,16 @@ import { ModalWindow } from '../components/comp/ModalWindow/ModalWindow';
 import { SAllWrapper, SBlockHeader, SMainWrapper } from './DeviceShop.styled';
 import { BackToTopBtn } from '../components/comp/BackToTopBtn/BackToTopBtn';
 import { uniqueKey } from '../__data__/utils/utils';
+import { useAppDispatch } from '../__data__/hook/useRedux';
 
 export const DeviceShop: React.FC = () => {
     const [open, setOpen] = useState(false);
 
-    const { data, theme, modalActive, isLoading } = useSelector((state: RootState) => state.shopData);
+    const { data, theme, modalActive, isLoading, isError } = useSelector(
+        (state: RootState) => state.shopData
+    );
 
-    const dispatch = useDispatch();
+    const dispatch = useAppDispatch();
 
     useEffect(() => {
         dispatch(fetchDataLow() as any);
@@ -39,7 +42,17 @@ export const DeviceShop: React.FC = () => {
 
     const renderPage = () =>
         isLoading ? (
-            <></>
+            <SAllWrapper>
+                <SMainWrapper>
+                    <SBlockHeader>Происходит загрузка,подождите пожалуйста!</SBlockHeader>
+                </SMainWrapper>
+            </SAllWrapper>
+        ) : isError ? (
+            <SAllWrapper>
+                <SMainWrapper>
+                    <SBlockHeader>Возникла ошибка! Error!Error!Error!</SBlockHeader>
+                </SMainWrapper>
+            </SAllWrapper>
         ) : (
             <SAllWrapper theme={theme} modalActive={modalActive}>
                 <SMainWrapper open={open}>
@@ -47,7 +60,7 @@ export const DeviceShop: React.FC = () => {
                     {renderDevises()}
                     <ModalWindow />
                 </SMainWrapper>
-                {window.scrollY > 0 ? <BackToTopBtn /> : <></>}
+                <BackToTopBtn />
             </SAllWrapper>
         );
 
