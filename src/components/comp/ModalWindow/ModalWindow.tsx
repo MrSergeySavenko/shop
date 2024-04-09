@@ -49,6 +49,8 @@ export const ModalWindow: React.FC = () => {
     const [count, setCount] = useState(1);
     const [color, setColor] = useState<IColor>({ name: '', color: '' });
     const [ok, setOk] = useState(false);
+    const [fetchModal, setFetchModal] = useState(false);
+    const [text, setText] = useState('');
 
     const dispatch = useAppDispatch();
 
@@ -57,6 +59,10 @@ export const ModalWindow: React.FC = () => {
             setColor({ color: modalData?.colors[0].color, name: modalData?.colors[0].name });
         }
     }, [modalData]);
+
+    useEffect(() => {
+        renderTextareaText();
+    }, [fetchModal]);
 
     const handleColculateCount = (plus: boolean) => {
         if (plus) {
@@ -82,6 +88,7 @@ export const ModalWindow: React.FC = () => {
         });
 
     const handleClearData = () => {
+        setFetchModal(false);
         dispatch(dataSlice.actions.modalDataFetchSuccess(null));
         document.body.style.overflowY = 'auto';
     };
@@ -89,6 +96,7 @@ export const ModalWindow: React.FC = () => {
     const hadleStopPropagation = (e: React.MouseEvent<HTMLDivElement>) => e.stopPropagation();
 
     const handleFetchUserChoose = async () => {
+        setFetchModal(true);
         if (modalData) {
             setOk(
                 await fetchUsersChoose({
@@ -111,6 +119,16 @@ export const ModalWindow: React.FC = () => {
         ) : (
             <></>
         );
+
+    const renderTextareaText = () => {
+        if (fetchModal) {
+            ok
+                ? setText('Все в порядке, ваш запрос отправлен в корзину!')
+                : setText('Что-то пошло не так, возможно вы не выбрали все позиции');
+        } else {
+            return setText('Можете написать сюда свои пожелания.');
+        }
+    };
 
     return createPortal(
         <>
@@ -159,14 +177,7 @@ export const ModalWindow: React.FC = () => {
                         <SBottomWrapper>
                             <SDescriptionWrapper>
                                 <SNameText>Комментарий к заказу</SNameText>
-                                <STextarea
-                                    theme={theme}
-                                    placeholder={
-                                        ok
-                                            ? 'Все в порядке, ваш запрос отправлен в корзину!'
-                                            : 'Что-то пошло не так, возможно вы не выбрали все позиции'
-                                    }
-                                />
+                                <STextarea theme={theme} placeholder={text} />
                             </SDescriptionWrapper>
                             <SButtonWrapper>
                                 <Button white={true} onClick={handleClearData}>
