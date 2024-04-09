@@ -246,6 +246,7 @@ export const SPlusConteiner = styled('div')(({ theme }: IProp) => ({
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
     borderRadius: '16px 0 0 16px',
+    cursor: 'pointer',
 }));
 
 export const SMinusConteiner = styled('div')(({ theme }: IProp) => ({
@@ -256,6 +257,7 @@ export const SMinusConteiner = styled('div')(({ theme }: IProp) => ({
     backgroundImage: theme ? "url('/MinusWhite.svg')" : "url('/Minus.svg')",
     backgroundRepeat: 'no-repeat',
     backgroundPosition: 'center',
+    cursor: 'pointer',
 }));
 
 export const SColorConteiner = styled('div')(() => ({
